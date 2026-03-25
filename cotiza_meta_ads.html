@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-MX" xml:lang="es-MX">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización Interactiva: Campaña Meta Ads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Application Structure Plan: 
+        1. Header: Título y navegación simple (si aplica).
+        2. Sección Resumen del Servicio: Introducción a la cotización.
+        3. Sección Detalle del Proyecto por Fases: Pestañas interactivas (JS) para cada una de las 4 fases, mostrando actividades y cronograma. Esto mejora la usabilidad al no abrumar al usuario con toda la información de golpe.
+        4. Sección Inversión Detallada: Tarjetas claras para costos iniciales y mensuales, con nota sobre presupuesto publicitario.
+        5. Sección Términos y Contacto: Lista de términos y condiciones, y sección de contacto con información y un CTA.
+        Este diseño de flujo único con interactividad en las fases busca facilitar la comprensión progresiva de la cotización.
+    -->
+    <!-- Visualization & Content Choices:
+        - Resumen del Servicio: Bloque de texto (HTML/CSS). Goal: Informar. Justificación: Presentación directa del propósito. (NO SVG/Mermaid)
+        - Fases del Proyecto: Pestañas interactivas (HTML/CSS/JS). Goal: Organizar/Informar. Justificación: Permite al usuario explorar cada fase sin sobrecargar la página. Las actividades se listan con viñetas. (NO SVG/Mermaid)
+        - Inversión Detallada: Tarjetas estilizadas (HTML/CSS). Goal: Informar. Justificación: Presentación clara y separada de los componentes de costo. (NO SVG/Mermaid)
+        - Términos y Contacto: Listas y bloques de texto (HTML/CSS). Goal: Informar/Organizar. Justificación: Claridad en los términos y fácil acceso a la información de contacto. (NO SVG/Mermaid)
+        - Iconos: Caracteres Unicode para mejorar la legibilidad de listas. Goal: Informar.
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F4F7F6; /* Warm Neutral */
+            color: #343A40; /* Dark Gray */
+        }
+        .tab-button {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #007BFF; /* Corporate Blue */
+            color: white;
+            border-color: #007BFF;
+        }
+        .tab-button:not(.active):hover {
+            background-color: #E9ECEF; /* Light Gray for hover */
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .section-title {
+            color: #007BFF; /* Corporate Blue */
+        }
+        .card {
+            background-color: #FFFFFF; /* White */
+            border-left: 5px solid #007BFF; /* Corporate Blue accent */
+        }
+        .cta-button {
+            background-color: #007BFF; /* Corporate Blue */
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #0056b3; /* Darker Corporate Blue */
+        }
+        .terms-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+        }
+        .terms-list li::before {
+            content: '✓'; /* Unicode checkmark */
+            position: absolute;
+            left: 0;
+            color: #007BFF; /* Corporate Blue */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="leading-relaxed">
+
+    <header class="bg-[#007BFF] text-white py-6 shadow-md">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold">Cotización Interactiva: Campaña Meta Ads</h1>
+            <p class="text-lg mt-1">Para el Lanzamiento de su Nuevo Servicio</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="resumen-servicio" class="mb-12">
+            <div class="bg-white shadow-lg rounded-lg p-6 md:p-8">
+                <h2 class="text-2xl font-bold section-title mb-4">1. Resumen del Servicio Propuesto</h2>
+                <p class="text-gray-700 mb-3">
+                    Esta cotización detalla la creación y gestión integral de una campaña de Meta Ads, diseñada específicamente para el lanzamiento y la promoción efectiva de su <strong>nuevo servicio</strong>. Utilizaremos las plataformas de Facebook e Instagram para alcanzar sus objetivos.
+                </p>
+                <p class="text-gray-700">
+                    Nuestro enfoque estratégico se centra en <strong class="text-[#007BFF]">maximizar la visibilidad</strong> de su oferta, <strong class="text-[#007BFF]">generar un interés genuino</strong> en su público objetivo y, fundamentalmente, <strong class="text-[#007BFF]">captar clientes potenciales cualificados</strong> que impulsen el crecimiento de su nuevo servicio.
+                </p>
+            </div>
+        </section>
+
+        <section id="detalle-proyecto" class="mb-12">
+            <div class="bg-white shadow-lg rounded-lg p-6 md:p-8">
+                <h2 class="text-2xl font-bold section-title mb-6">2. Detalle del Proyecto por Fases</h2>
+                <p class="text-gray-700 mb-6">
+                    La campaña para su nuevo servicio se desarrollará a través de las siguientes fases estructuradas, garantizando una implementación metódica y orientada a resultados. Puede hacer clic en cada fase para ver los detalles.
+                </p>
+                <div class="mb-4 border-b border-gray-300">
+                    <nav class="flex flex-wrap -mb-px" aria-label="Tabs">
+                        <button class="tab-button active text-gray-600 hover:text-[#007BFF] whitespace-nowrap py-3 px-5 border-b-2 font-semibold text-sm focus:outline-none" data-tab="fase1">
+                            Fase 1: Planificación (Semana 1)
+                        </button>
+                        <button class="tab-button text-gray-600 hover:text-[#007BFF] whitespace-nowrap py-3 px-5 border-b-2 font-semibold text-sm focus:outline-none" data-tab="fase2">
+                            Fase 2: Creación (Semana 2)
+                        </button>
+                        <button class="tab-button text-gray-600 hover:text-[#007BFF] whitespace-nowrap py-3 px-5 border-b-2 font-semibold text-sm focus:outline-none" data-tab="fase3">
+                            Fase 3: Lanzamiento (Semana 3)
+                        </button>
+                        <button class="tab-button text-gray-600 hover:text-[#007BFF] whitespace-nowrap py-3 px-5 border-b-2 font-semibold text-sm focus:outline-none" data-tab="fase4">
+                            Fase 4: Optimización (Mensual)
+                        </button>
+                    </nav>
+                </div>
+
+                <div id="fase1" class="tab-content active p-4 bg-gray-50 rounded-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Fase 1: Planificación y Estrategia (Semana 1)</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 pl-4">
+                        <li><strong>Reunión Inicial:</strong> Entendimiento profundo del nuevo servicio, objetivos de negocio, público objetivo y propuesta de valor única.</li>
+                        <li><strong>Investigación de Audiencia:</strong> Análisis de datos demográficos, intereses y comportamientos para identificar segmentos clave en Meta.</li>
+                        <li><strong>Definición de Objetivos de Campaña:</strong> Establecimiento de objetivos claros (ej. reconocimiento, clientes potenciales, tráfico web) alineados con el lanzamiento del servicio.</li>
+                        <li><strong>Estrategia de Contenido:</strong> Desarrollo de un plan para los creativos (imágenes/videos) y copys (textos) que resuenen con la audiencia. proporcionado por el cliente</li>
+                    </ul>
+                </div>
+                <div id="fase2" class="tab-content p-4 bg-gray-50 rounded-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Fase 2: Creación y Configuración de Campaña (Semana 2)</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 pl-4">
+                        <li><strong>Estructura de Campaña:</strong> Diseño de la arquitectura de la campaña en el Administrador de Anuncios de Meta (campañas, conjuntos de anuncios, anuncios).</li>
+                        <li><strong>Segmentación Avanzada:</strong> Configuración de audiencias personalizadas, similares y guardadas.</li>
+                        <li><strong>Desarrollo de Creativos:</strong> Creación de [Número] variantes de imágenes/videos y [Número] variantes de copys publicitarios.</li>
+                        <li><strong>Configuración Técnica:</strong> Implementación del Píxel de Meta (si no está ya configurado) y configuración de eventos de conversión.</li>
+                        <li><strong>Presupuesto y Pujas:</strong> Definición de la estrategia de presupuesto y puja óptima.</li>
+                    </ul>
+                </div>
+                <div id="fase3" class="tab-content p-4 bg-gray-50 rounded-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Fase 3: Lanzamiento y Monitoreo Inicial (Semana 3)</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 pl-4">
+                        <li><strong>Lanzamiento de Campaña:</strong> Puesta en marcha de los anuncios.</li>
+                        <li><strong>Monitoreo Diario:</strong> Supervisión del rendimiento inicial, detección de anomalías y ajustes rápidos.</li>
+                        <li><strong>Pruebas A/B:</strong> Implementación de pruebas iniciales para identificar los creativos y audiencias más efectivos.</li>
+                    </ul>
+                </div>
+                <div id="fase4" class="tab-content p-4 bg-gray-50 rounded-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Fase 4: Optimización y Reporte (Mensual Continuo)</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 pl-4">
+                        <li><strong>Optimización Continua:</strong> Ajustes de pujas, segmentación, creativos y ubicaciones para mejorar el rendimiento.</li>
+                        <li><strong>Análisis de Métricas:</strong> Seguimiento de KPIs como CTR, CPC, CPA, ROAS y tasa de conversión.</li>
+                        <li><strong>Reportes Mensuales:</strong> Informes detallados con el rendimiento de la campaña, insights y recomendaciones para futuras optimizaciones.</li>
+                        <li><strong>Reuniones de Seguimiento:</strong> [Número] reunión(es) mensual(es) para revisar el progreso y planificar los siguientes pasos.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="inversion" class="mb-12">
+            <div class="bg-white shadow-lg rounded-lg p-6 md:p-8">
+                <h2 class="text-2xl font-bold section-title mb-6">3. Inversión Estimada (Honorarios de Servicio)</h2>
+                <p class="text-gray-700 mb-6">
+                    El costo de nuestros servicios profesionales para la creación y gestión de su campaña de Meta Ads se detalla a continuación:
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="card p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Fase Inicial (Planificación y Creación)</h3>
+                        <p class="text-3xl font-bold text-[#007BFF] mb-3">$ 17,400  IVA incluido</p>
+                        <p class="text-sm text-gray-600 mb-3">(Pago único)</p>
+                        <p class="text-gray-700 text-sm">Este monto cubre integralmente las actividades de la Fase 1 (Planificación y Estrategia) y la Fase 2 (Creación y Configuración de Campaña). sin la creacion del arte</p>
+                    </div>
+                    <div class="card p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Gestión Mensual y Optimización</h3>
+                        <p class="text-3xl font-bold text-[#007BFF] mb-3">$ 8,700  IVA incluido <span class="text-lg font-normal text-gray-600">/ mes</span></p>
+                        <p class="text-gray-700 text-sm mb-3">Cubre las actividades continuas de la Fase 3 (Lanzamiento y Monitoreo Inicial) y la Fase 4 (Optimización y Reporte).</p>
+                        <p class="text-gray-700 text-sm">Se requiere un compromiso inicial mínimo de 3 meses para asegurar la efectividad y optimización de la campaña.</p>
+                    </div>
+                </div>
+                <div class="mt-8 p-4 bg-blue-50 border-l-4 border-[#007BFF] rounded-md">
+                    <h4 class="font-semibold text-[#007BFF] mb-2">Nota Importante sobre el Presupuesto Publicitario:</h4>
+                    <p class="text-sm text-gray-700">
+                        El presupuesto destinado a la publicidad en Meta (el monto que se pagará directamente a Facebook/Instagram por mostrar los anuncios) es independiente de nuestros honorarios de servicio. Este presupuesto será gestionado directamente desde su cuenta publicitaria. Recomendamos un presupuesto publicitario mínimo de [Monto en Moneda Local] por mes para obtener resultados significativos y permitir una optimización efectiva.
+                        *Este presupuesto tiene un rango desde los $ 2.500 a hasta $ 5.000 mensuales de manera incial
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="terminos-contacto" class="mb-12">
+            <div class="bg-white shadow-lg rounded-lg p-6 md:p-8">
+                <h2 class="text-2xl font-bold section-title mb-6">4. Términos y Próximos Pasos</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Términos y Condiciones del Servicio:</h3>
+                        <ul class="terms-list text-gray-700 space-y-2 text-sm">
+                            <li><strong>Validez de la Cotización:</strong> Esta propuesta es válida por [Número] días a partir de la fecha de emisión (23 de mayo de 2025).</li>
+                            <li><strong>Facturación:</strong> La fase inicial se facturará al confirmar el inicio del proyecto. Las tarifas de gestión mensual se facturarán al comienzo de cada mes de servicio.</li>
+                            <li><strong>Pagos:</strong> Los pagos se realizarán mediante [Método de Pago Preferido, ej. transferencia bancaria].</li>
+                            <li><strong>Acceso a Plataformas:</strong> Para la gestión de la campaña, se requerirá acceso de administrador a su cuenta publicitaria de Meta Business Manager y a su página de Facebook/Instagram.</li>
+                            <li><strong>Comunicación:</strong> Mantendremos una comunicación fluida y constante a través de [Canales de Comunicación, ej. correo electrónico, reuniones virtuales programadas].</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Contáctanos para Empezar:</h3>
+                        <p class="text-gray-700 mb-4">
+                            Agradecemos sinceramente su interés en nuestros servicios. Estamos convencidos de que una campaña de Meta Ads estratégicamente diseñada y ejecutada será un pilar fundamental para el lanzamiento exitoso de su nuevo servicio.
+                        </p>
+                        <p class="text-gray-700 mb-1"><strong>iIDes Tec</strong></p>
+                        <p class="text-gray-700 mb-1">Consultoría Informática</p>
+                        <p class="text-gray-700 mb-1">📧 <a href="mailto:contacto@iidtec.site" class="text-[#007BFF] hover:underline">contacto@iidtec.site</a></p>
+                        <p class="text-gray-700 mb-1">📞 5578620531</p>
+                        <p class="text-gray-700 mb-4">https://iidtec.site</p>
+                        <button class="cta-button text-white font-bold py-3 px-6 rounded-lg shadow-md w-full md:w-auto">
+                            Discutir Próximos Pasos
+                        </button>
+                        <p class="text-xs text-gray-500 mt-3">No dude en contactarnos si tiene alguna pregunta o si desea personalizar esta propuesta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 text-center py-6 mt-8">
+        <p>&copy; <span id="currentYear"></span> iIDes Tec. Todos los derechos reservados.</p>
+        <p class="text-sm">Cotización generada el 23 de mayo de 2025.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.dataset.tab;
+
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
+                button.classList.add('active');
+                button.setAttribute('aria-selected', 'true');
+
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === targetTab) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

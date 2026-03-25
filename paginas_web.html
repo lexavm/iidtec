@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso Interactivo de Creación Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Visualization & Content Choices:
+        - Report Info: 7 Stages of Web Creation (Planificación, Diseño, Front-End, Back-End, Pruebas, Lanzamiento, Mantenimiento).
+        - Goal: Inform and Educate users about each stage in the web development lifecycle.
+        - Viz/Presentation Method:
+            - Navigation: Tab-like buttons for each stage (HTML/Tailwind).
+            - Content Display: Dynamically shown/hidden text blocks with headings and bullet points for each stage (HTML/Tailwind, JS for interactivity).
+            - Icons: Unicode characters for each stage to provide visual cues (e.g., 📝, 🎨, 💻).
+            - Progress/Flow: A horizontal visual representation of the 7 steps using styled HTML divs (HTML/Tailwind).
+        - Interaction:
+            - Clicking a tab displays the corresponding stage's details.
+            - Active tab is visually highlighted.
+        - Justification: This approach breaks down complex information into digestible, navigable sections, making it user-friendly and aligning with the infographic's purpose. The visual flow helps understand the overall process.
+        - Library/Method: HTML, Tailwind CSS, Vanilla JavaScript.
+        - Confirmation: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbf7; /* Warm Beige Light */
+        }
+        .tab-active {
+            background-color: #d1fae5; /* Emerald-100 */
+            color: #059669; /* Emerald-600 */
+            border-bottom-color: #059669;
+        }
+        .tab-inactive {
+            background-color: #f3f4f6; /* Gray-100 */
+            color: #4b5563; /* Gray-600 */
+            border-bottom-color: transparent;
+        }
+        .progress-step {
+            transition: background-color 0.3s ease;
+        }
+        .progress-step-active {
+            background-color: #10B981; /* Emerald-500 */
+        }
+        .progress-step-inactive {
+            background-color: #D1D5DB; /* Gray-300 */
+        }
+        .progress-line {
+            background-color: #D1D5DB; /* Gray-300 */
+            height: 4px;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+         /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdfbf7; /* Light beige background for the track */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a3a3a3; /* Neutral gray for the thumb */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #737373; /* Darker gray on hover */
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-5xl">
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl sm:text-4xl font-bold text-emerald-700 mb-2">Guía Interactiva: Creación de Páginas Web</h1>
+            <p class="text-gray-600 text-lg">Explora cada fase del desarrollo web, desde la idea inicial hasta el mantenimiento continuo. Esta guía te ayudará a comprender los pasos fundamentales para construir una presencia online exitosa.</p>
+        </header>
+
+        <div id="stagesData" class="hidden">
+            [
+                {
+                    "id": "planificacion",
+                    "title": "1. Planificación y Conceptualización",
+                    "icon": "📝",
+                    "intro": "Esta es la base de cualquier proyecto web exitoso. Aquí se definen los cimientos sobre los cuales se construirá toda la estructura digital. Implica entender claramente qué se quiere lograr y para quién.",
+                    "points": [
+                        "<strong>Definir el Propósito:</strong> ¿Cuál es el objetivo de la página web? (Vender productos, informar, entretener, generar leads, etc.). Esto guiará todas las decisiones futuras.",
+                        "<strong>Público Objetivo:</strong> ¿A quién está dirigida la página? Conocer sus necesidades, preferencias y comportamiento online es crucial para el diseño y el contenido.",
+                        "<strong>Investigación de Competencia:</strong> Analizar qué hacen otras páginas similares, identificar sus fortalezas y debilidades para encontrar oportunidades de diferenciación.",
+                        "<strong>Definición de Contenido Clave:</strong> Qué información, textos, imágenes, videos y funcionalidades se incluirán. Esbozar un mapa de contenido inicial."
+                    ]
+                },
+                {
+                    "id": "diseno",
+                    "title": "2. Diseño y Estructura",
+                    "icon": "🎨",
+                    "intro": "En esta etapa, las ideas comienzan a tomar forma visual. Se define cómo se verá y se sentirá la página web, priorizando siempre la facilidad de uso para el visitante.",
+                    "points": [
+                        "<strong>Arquitectura de la Información:</strong> Organizar el contenido de manera lógica y jerárquica para que los usuarios encuentren fácilmente lo que buscan. Se suelen crear mapas de sitio.",
+                        "<strong>Wireframes:</strong> Esqueletos básicos de cada página, mostrando la disposición de los elementos principales (menús, textos, imágenes, botones) sin entrar en detalles visuales.",
+                        "<strong>Mockups/Prototipos Visuales:</strong> Diseños más detallados que muestran la apariencia final (colores, tipografías, imágenes). Pueden ser estáticos o interactivos para simular la navegación.",
+                        "<strong>Experiencia de Usuario (UX) e Interfaz de Usuario (UI):</strong> Asegurar que la página sea intuitiva, accesible, eficiente y agradable de usar. La UI se enfoca en lo visual y la UX en la funcionalidad y flujo."
+                    ]
+                },
+                {
+                    "id": "frontend",
+                    "title": "3. Desarrollo Front-End",
+                    "icon": "💻",
+                    "intro": "Aquí es donde la magia visual cobra vida. El desarrollo front-end traduce los diseños en código que los navegadores pueden interpretar y mostrar a los usuarios. Es la parte de la web con la que el usuario interactúa directamente.",
+                    "points": [
+                        "<strong>HTML (HyperText Markup Language):</strong> Es el esqueleto de la página, define la estructura y el contenido semántico (títulos, párrafos, imágenes, enlaces).",
+                        "<strong>CSS (Cascading Style Sheets):</strong> Se encarga del estilo visual: colores, fuentes, espaciados, diseño responsive (adaptación a diferentes pantallas).",
+                        "<strong>JavaScript:</strong> Añade interactividad y dinamismo: animaciones, validación de formularios, efectos visuales, actualización de contenido sin recargar la página.",
+                        "<strong>Frameworks y Librerías (Opcional):</strong> Herramientas como React, Angular, Vue.js (para JavaScript) o Bootstrap, Tailwind CSS (para CSS) pueden agilizar el desarrollo y ofrecer componentes pre-construidos."
+                    ]
+                },
+                {
+                    "id": "backend",
+                    "title": "4. Desarrollo Back-End (si aplica)",
+                    "icon": "⚙️",
+                    "intro": "El back-end es el motor que impulsa la página web, la parte que el usuario no ve pero que es esencial para funcionalidades complejas. No todas las webs lo necesitan (ej. webs estáticas informativas).",
+                    "points": [
+                        "<strong>Lógica del Servidor:</strong> Procesamiento de datos, gestión de usuarios, interacciones con bases de datos y otras operaciones que ocurren en el servidor.",
+                        "<strong>Lenguajes de Programación:</strong> Comunes son Python (con Django o Flask), PHP (Laravel, Symfony), Node.js (Express), Ruby (Rails), Java (Spring).",
+                        "<strong>Bases de Datos:</strong> Para almacenar y recuperar información de forma estructurada (ej. usuarios, productos, posts). Ejemplos: MySQL, PostgreSQL, MongoDB.",
+                        "<strong>APIs (Interfaces de Programación de Aplicaciones):</strong> Permiten la comunicación entre diferentes sistemas o servicios (ej. pasarelas de pago, redes sociales)."
+                    ]
+                },
+                {
+                    "id": "pruebas",
+                    "title": "5. Pruebas y Optimización",
+                    "icon": "✅",
+                    "intro": "Antes de mostrar la página al mundo, es crucial asegurarse de que todo funcione perfectamente y ofrezca la mejor experiencia posible. Esta fase es vital para la calidad.",
+                    "points": [
+                        "<strong>Pruebas de Funcionalidad:</strong> Verificar que todos los enlaces, botones, formularios y otras interacciones funcionen como se espera.",
+                        "<strong>Pruebas de Compatibilidad:</strong> Asegurar que la página se vea y funcione bien en diferentes navegadores (Chrome, Firefox, Safari, Edge) y dispositivos (móviles, tablets, ordenadores).",
+                        "<strong>Pruebas de Rendimiento:</strong> Optimizar la velocidad de carga de la página. Imágenes comprimidas, código minimizado y buen hosting son claves.",
+                        "<strong>SEO (Search Engine Optimization) Básico:</strong> Revisar títulos, metadescripciones, URLs amigables y estructura de encabezados para mejorar la visibilidad en motores de búsqueda.",
+                        "<strong>Pruebas de Seguridad:</strong> Identificar y corregir vulnerabilidades para proteger la página y los datos de los usuarios."
+                    ]
+                },
+                {
+                    "id": "lanzamiento",
+                    "title": "6. Lanzamiento (Despliegue)",
+                    "icon": "🚀",
+                    "intro": "¡El momento emocionante de poner la página web en línea para que el mundo la vea! Este proceso técnico requiere atención a los detalles.",
+                    "points": [
+                        "<strong>Elección y Registro de Dominio:</strong> Escoger un nombre único y memorable para tu página web (ej: `tupagina.com`) y registrarlo.",
+                        "<strong>Selección de Hosting:</strong> Contratar un servicio de alojamiento web donde se guardarán los archivos de tu página para que esté accesible 24/7.",
+                        "<strong>Subida de Archivos al Servidor:</strong> Transferir todos los archivos del sitio (HTML, CSS, JS, imágenes) al servidor de hosting, usualmente vía FTP o herramientas del panel de control.",
+                        "<strong>Configuración DNS:</strong> Apuntar tu nombre de dominio a la dirección del servidor de hosting para que los usuarios lleguen a tu sitio al escribir la URL.",
+                        "<strong>Pruebas Finales Post-Lanzamiento:</strong> Una última revisión general en el entorno real para confirmar que todo está correcto."
+                    ]
+                },
+                {
+                    "id": "mantenimiento",
+                    "title": "7. Mantenimiento y Actualización",
+                    "icon": "🛠️",
+                    "intro": "El trabajo no termina con el lanzamiento. Una página web es un ente vivo que requiere cuidado continuo para seguir funcionando bien y siendo relevante.",
+                    "points": [
+                        "<strong>Monitoreo Constante:</strong> Vigilar el rendimiento del servidor, la disponibilidad de la página (uptime) y posibles errores o problemas de seguridad.",
+                        "<strong>Actualizaciones de Contenido:</strong> Mantener la información fresca, añadir nuevas secciones, artículos de blog, productos, etc., según la naturaleza del sitio.",
+                        "<strong>Actualizaciones Técnicas:</strong> Aplicar parches de seguridad, actualizar el CMS (si se usa), plugins, librerías y versiones de software del servidor.",
+                        "<strong>Copias de Seguridad (Backups):</strong> Realizar copias de seguridad periódicas de los archivos y la base de datos para poder restaurar el sitio en caso de desastre.",
+                        "<strong>Análisis de Datos y Métricas:</strong> Usar herramientas como Google Analytics para entender el comportamiento de los usuarios, identificar áreas de mejora y tomar decisiones informadas."
+                    ]
+                }
+            ]
+        </div>
+
+        <div class="mb-8 relative px-4">
+            <div class="progress-line"></div>
+            <div class="flex justify-between items-center relative">
+                <div id="progress-step-1" class="progress-step w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold z-10" title="Planificación">1</div>
+                <div id="progress-step-2" class="progress-step w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold z-10" title="Diseño">2</div>
+                <div id="progress-step-3" class="progress-step w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold z-10" title="Front-End">3</div>
+                <div id="progress-step-4" class="progress-step w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold z-10" title="Back-End">4</div>
+                <div id="progress-step-5" class="progress-step w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold z-10" title="Pruebas">5</div>
+                <div id="progress-step-6" class="progress-step w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold z-10" title="Lanzamiento">6</div>
+                <div id="progress-step-7" class="progress-step w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold z-10" title="Mantenimiento">7</div>
+            </div>
+        </div>
+
+        <nav class="mb-8 overflow-x-auto pb-2">
+            <ul id="tabsNav" class="flex space-x-1 sm:space-x-2 border-b border-gray-300 whitespace-nowrap">
+            </ul>
+        </nav>
+
+        <main id="contentArea" class="bg-white p-6 sm:p-8 rounded-lg shadow-lg min-h-[300px]">
+            </main>
+
+        <footer class="mt-12 text-center text-gray-500 text-sm">
+            <p>&copy; <span id="currentYear"></span> Guía Interactiva de Creación Web</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const stagesDataText = document.getElementById('stagesData').textContent;
+            const stages = JSON.parse(stagesDataText);
+            const tabsNav = document.getElementById('tabsNav');
+            const contentArea = document.getElementById('contentArea');
+            let activeTabId = stages[0].id;
+
+            function updateProgressIndicator(selectedIndex) {
+                stages.forEach((stage, index) => {
+                    const stepElement = document.getElementById(`progress-step-${index + 1}`);
+                    if (stepElement) {
+                        if (index === selectedIndex) {
+                            stepElement.classList.add('progress-step-active');
+                            stepElement.classList.remove('progress-step-inactive');
+                        } else {
+                            stepElement.classList.add('progress-step-inactive');
+                            stepElement.classList.remove('progress-step-active');
+                        }
+                    }
+                });
+            }
+            
+            function renderContent(stageId) {
+                const stage = stages.find(s => s.id === stageId);
+                if (!stage) return;
+
+                activeTabId = stageId;
+                contentArea.innerHTML = `
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-emerald-600 mb-3">${stage.icon} ${stage.title.substring(stage.title.indexOf(' ') + 1)}</h2>
+                    <p class="text-gray-600 mb-6 text-md leading-relaxed">${stage.intro}</p>
+                    <ul class="space-y-3 list-inside">
+                        ${stage.points.map(point => `<li class="flex items-start"><span class="text-emerald-500 mr-2 mt-1">◆</span><span class="text-gray-700 leading-relaxed">${point}</span></li>`).join('')}
+                    </ul>
+                `;
+                updateTabs();
+                const stageIndex = stages.findIndex(s => s.id === stageId);
+                updateProgressIndicator(stageIndex);
+            }
+
+            function updateTabs() {
+                tabsNav.innerHTML = ''; // Clear existing tabs
+                stages.forEach(stage => {
+                    const tabItem = document.createElement('li');
+                    tabItem.innerHTML = `
+                        <button data-id="${stage.id}" class="px-3 py-3 sm:px-4 sm:py-3 text-sm sm:text-base font-medium border-b-2 focus:outline-none transition-colors duration-150 ${stage.id === activeTabId ? 'tab-active' : 'tab-inactive'} hover:text-emerald-600">
+                           ${stage.icon} ${stage.title.split('.')[1].trim().split('(')[0].trim()}
+                        </button>
+                    `;
+                    tabsNav.appendChild(tabItem);
+                });
+            }
+            
+            tabsNav.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON' && e.target.dataset.id) {
+                    renderContent(e.target.dataset.id);
+                }
+            });
+
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Initial render
+            renderContent(stages[0].id);
+        });
+    </script>
+</body>
+</html>

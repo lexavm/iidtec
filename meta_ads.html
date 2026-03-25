@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-MX" xml:lang="es-MX">
+<head>
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Tendencias y Estrategias en Meta Ads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7F7F7; /* Chosen Palette: Energetic & Playful - Neutral/Background */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Default max-width */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Base height */
+            max-height: 400px; /* Max height */
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px; /* Taller on medium screens */
+            }
+        }
+        .section-title {
+            color: #118AB2; /* Chosen Palette: Energetic & Playful - Accent 2 */
+        }
+        .card-bg {
+            background-color: white;
+        }
+        .highlight-stat {
+            color: #FF6B6B; /* Chosen Palette: Energetic & Playful - Primary */
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        .accent-text {
+             color: #FF6B6B; /* Chosen Palette: Energetic & Playful - Primary */
+        }
+        .secondary-accent-text {
+            color: #06D6A0; /* Chosen Palette: Energetic & Playful - Accent 1 */
+        }
+        .flowchart-step {
+            background-color: #FFD166; /* Chosen Palette: Energetic & Playful - Secondary */
+            color: #333333;
+            border-left: 5px solid #FF6B6B; /* Chosen Palette: Energetic & Playful - Primary */
+        }
+        .flowchart-arrow {
+            color: #118AB2; /* Chosen Palette: Energetic & Playful - Accent 2 */
+        }
+        .icon-placeholder {
+            font-size: 2.5rem;
+            color: #06D6A0; /* Chosen Palette: Energetic & Playful - Accent 1 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- 
+        Chosen Color Palette: "Energetic & Playful"
+        Primary: #FF6B6B (Coral Red)
+        Secondary: #FFD166 (Sunny Yellow)
+        Accent 1: #06D6A0 (Turquoise Green)
+        Accent 2: #118AB2 (Cerulean Blue)
+        Neutral/Background: #F7F7F7 (Light Gray)
+        Text: #333333 (Dark Gray)
+
+        Narrative & Structure Plan:
+        1. Introducción - El Poder de Meta Ads: Hook with big statement, what/why.
+        2. Definiendo el Éxito - Objetivos de Campaña: Importance of objectives, visualize types.
+        3. Conectando con tu Audiencia - El Arte de la Segmentación: Power of segmentation, visualize types.
+        4. Formatos Publicitarios - Creatividad que Convierte: Showcase ad formats.
+        5. El Proceso Hacia el Éxito - Pasos Clave de una Campaña: Visualize 6 steps.
+        6. Midiendo Resultados - Métricas que Importan: Importance of metrics, visualize key ones.
+        7. Conclusión - Tu Próximo Paso en Meta Ads: Summary and CTA.
+
+        Visualization Choices Justification:
+        - Section 1 (Poder de Meta Ads): Single Big Number (HTML/CSS) - Goal: Inform. Justification: Quick impact. (NO SVG)
+        - Section 2 (Objetivos): Donut Chart (Chart.js Canvas) - Goal: Compare/Organize. Justification: Shows proportions of campaign goal types. (NO SVG)
+        - Section 3 (Segmentación): HTML/CSS Diagram (Mind Map/Flow style) - Goal: Organize. Justification: Hierarchical data without SVG. (NO SVG, NO MERMAID JS)
+        - Section 4 (Formatos): HTML/CSS Cards with Unicode Icons - Goal: Inform/Compare. Justification: Clean list of options. (NO SVG)
+        - Section 5 (Pasos Clave): HTML/CSS Flow Chart - Goal: Organize. Justification: Clear process visualization. (NO SVG, NO MERMAID JS)
+        - Section 6 (Métricas): Bar Chart (Chart.js Canvas) - Goal: Compare. Justification: Compares relative focus on metrics. (NO SVG)
+        
+        Confirmation: NEITHER Mermaid JS NOR SVG were used anywhere in this output. All visuals are HTML/CSS or Chart.js Canvas.
+    -->
+
+    <header class="bg-[#118AB2] text-white p-8 text-center sticky top-0 z-50 shadow-lg">
+        <h1 class="text-4xl font-bold">Tendencias y Estrategias Clave en Meta Ads</h1>
+        <p class="text-xl mt-2">Una guía visual para implenmentar tus campañas publicitarias.</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="poder" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">El Impacto Global de Meta Ads</h2>
+                <p class="text-lg text-center mb-6">
+                    Meta Ads (anteriormente Facebook Ads) se ha consolidado como una plataforma publicitaria indispensable para empresas de todos los tamaños. Su capacidad para conectar con una <span class="font-semibold accent-text">audiencia masiva y altamente segmentada</span> la convierte en una herramienta fundamental para el crecimiento y la visibilidad en el entorno digital actual.
+                </p>
+                <div class="text-center my-8">
+                    <p class="text-gray-600 text-2xl">Conecta con</p>
+                    <p class="highlight-stat">MILLONES</p>
+                    <p class="text-gray-600 text-2xl">de usuarios activos diariamente. ya que integra Facebook, Instagram, WhatsApp</p>
+                </div>
+                <p class="text-lg text-center">
+                    Desde aumentar el reconocimiento de marca hasta impulsar conversiones directas, Meta Ads ofrece un abanico de soluciones para alcanzar prácticamente cualquier objetivo de marketing. Entender sus tendencias y mejores prácticas es crucial para maximizar el retorno de la inversión publicitaria.
+                </p>
+            </div>
+        </section>
+
+        <section id="objetivos" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">Tendencia: Campañas Impulsadas por Objetivos Claros</h2>
+                <p class="text-lg text-center mb-8">
+                    La efectividad en Meta Ads comienza con la definición precisa de objetivos. La plataforma estructura sus opciones en torno a las etapas clave del embudo de marketing, permitiendo a los anunciantes alinear sus esfuerzos con metas específicas. Esta tendencia hacia la publicidad orientada a objetivos asegura campañas más enfocadas y resultados medibles.
+                </p>
+                <div class="md:flex md:items-center md:justify-around">
+                    <div class="chart-container mb-8 md:mb-0 md:w-1/2">
+                        <canvas id="objetivosChart"></canvas>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8">
+                        <h3 class="text-2xl font-semibold mb-4 accent-text">Principales Categorías de Objetivos:</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li><strong class="secondary-accent-text">Reconocimiento:</strong> Ideal para construir notoriedad de marca y alcanzar a una amplia audiencia.</li>
+                            <li><strong class="secondary-accent-text">Consideración:</strong> Enfocado en generar interés, interacción y dirigir tráfico cualificado.</li>
+                            <li><strong class="secondary-accent-text">Conversión:</strong> Diseñado para impulsar acciones valiosas como compras, registros o visitas.</li>
+                        </ul>
+                        <p class="mt-4 text-md text-gray-600">Seleccionar el objetivo correcto es el primer paso para que Meta optimice la entrega de tus anuncios a las personas con mayor probabilidad de realizar la acción deseada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="segmentacion" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">El Arte de la Segmentación: Llegando a la Audiencia Ideal</h2>
+                <p class="text-lg text-center mb-8">
+                    Una de las mayores fortalezas de Meta Ads es su capacidad de segmentación detallada. La tendencia es utilizar combinaciones sofisticadas de audiencias para alcanzar nichos específicos con mensajes altamente relevantes, optimizando así la inversión publicitaria.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2 text-[#FF6B6B]">Audiencias Personalizadas</h3>
+                        <p class="text-sm">Conecta con personas que ya interactuaron con tu negocio (visitantes web, listas de clientes).</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2 text-[#FF6B6B]">Audiencias Similares</h3>
+                        <p class="text-sm">Encuentra nuevos usuarios con perfiles parecidos a tus mejores clientes actuales.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2 text-[#FF6B6B]">Audiencias Guardadas</h3>
+                        <p class="text-sm">Define tu público por datos demográficos, intereses y comportamientos.</p>
+                    </div>
+                </div>
+                <div class="mt-8 p-6 bg-gray-100 rounded-lg">
+                    <h4 class="text-xl font-semibold text-center mb-4 text-[#118AB2]">Profundizando en Audiencias Guardadas:</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                        <div class="bg-white p-3 rounded shadow text-center"><span class="font-bold text-[#06D6A0]">Demografía:</span> Edad, género, educación.</div>
+                        <div class="bg-white p-3 rounded shadow text-center"><span class="font-bold text-[#06D6A0]">Intereses:</span> Aficiones, páginas que siguen.</div>
+                        <div class="bg-white p-3 rounded shadow text-center"><span class="font-bold text-[#06D6A0]">Comportamientos:</span> Hábitos de compra, uso de dispositivos.</div>
+                        <div class="bg-white p-3 rounded shadow text-center"><span class="font-bold text-[#06D6A0]">Ubicación:</span> País, ciudad, radio específico.</div>
+                    </div>
+                </div>
+                 <p class="text-center mt-6 text-md text-gray-600">La segmentación precisa es clave para evitar el desperdicio de presupuesto y aumentar la relevancia de tus anuncios.</p>
+            </div>
+        </section>
+
+        <section id="formatos" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">Formatos Publicitarios: Creatividad que Atrae y Convierte</h2>
+                <p class="text-lg text-center mb-8">
+                    Meta Ads ofrece una diversidad de formatos para adaptarse a diferentes mensajes y objetivos. La tendencia es experimentar con múltiples formatos y optimizar según el rendimiento, priorizando el contenido visual de alta calidad y adaptado a móviles.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="border border-gray-200 rounded-lg p-4 text-center shadow hover:shadow-lg transition-shadow">
+                        <div class="icon-placeholder mb-3">🖼️</div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#FF6B6B]">Imagen</h3>
+                        <p class="text-sm">Visuales estáticos impactantes para captar la atención rápidamente.</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 text-center shadow hover:shadow-lg transition-shadow">
+                        <div class="icon-placeholder mb-3">🎬</div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#FF6B6B]">Video</h3>
+                        <p class="text-sm">Contenido dinámico para contar historias y demostrar productos en acción.</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 text-center shadow hover:shadow-lg transition-shadow">
+                        <div class="icon-placeholder mb-3">🔄</div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#FF6B6B]">Carrusel</h3>
+                        <p class="text-sm">Múltiples imágenes o videos en un solo anuncio, ideal para mostrar gamas.</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 text-center shadow hover:shadow-lg transition-shadow">
+                        <div class="icon-placeholder mb-3">🛍️</div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#FF6B6B]">Colección</h3>
+                        <p class="text-sm">Experiencia inmersiva en móviles, perfecta para catálogos de productos.</p>
+                    </div>
+                </div>
+                 <p class="text-center mt-8 text-md text-gray-600">Elegir el formato adecuado, junto con un copy persuasivo y un CTA claro, es fundamental para el éxito del anuncio.</p>
+            </div>
+        </section>
+
+        <section id="proceso" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">El Proceso Hacia el Éxito: Pasos Fundamentales de una Campaña</h2>
+                <p class="text-lg text-center mb-8">
+                    Lanzar una campaña efectiva en Meta Ads sigue un proceso estructurado. Comprender y ejecutar cada paso cuidadosamente es una tendencia clave para optimizar recursos y alcanzar los objetivos deseados.
+                </p>
+                <div class="space-y-4">
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#FF6B6B]">1.</span>
+                        <div><h4 class="font-semibold">Definir Objetivos</h4><p class="text-sm">Establecer metas claras para la campaña.</p></div>
+                    </div>
+                    <div class="text-center flowchart-arrow text-2xl">⬇️</div>
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#FF6B6B]">2.</span>
+                        <div><h4 class="font-semibold">Conocer Audiencia y Segmentar</h4><p class="text-sm">Identificar y definir el público objetivo.</p></div>
+                    </div>
+                     <div class="text-center flowchart-arrow text-2xl">⬇️</div>
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#FF6B6B]">3.</span>
+                        <div><h4 class="font-semibold">Establecer Presupuesto y Programación</h4><p class="text-sm">Definir inversión y duración.</p></div>
+                    </div>
+                     <div class="text-center flowchart-arrow text-2xl">⬇️</div>
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#FF6B6B]">4.</span>
+                        <div><h4 class="font-semibold">Crear Anuncios Atractivos</h4><p class="text-sm">Diseñar creativos y copys persuasivos.</p></div>
+                    </div>
+                     <div class="text-center flowchart-arrow text-2xl">⬇️</div>
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#FF6B6B]">5.</span>
+                        <div><h4 class="font-semibold">Configurar en Administrador de Anuncios</h4><p class="text-sm">Implementar la campaña en la plataforma.</p></div>
+                    </div>
+                     <div class="text-center flowchart-arrow text-2xl">⬇️</div>
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#FF6B6B]">6.</span>
+                        <div><h4 class="font-semibold">Monitorear, Analizar y Optimizar</h4><p class="text-sm">Seguimiento continuo y ajustes para mejorar.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="metricas" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">Midiendo el Éxito: Métricas Clave en Auge</h2>
+                <p class="text-lg text-center mb-8">
+                    El análisis de datos es fundamental. La tendencia actual se enfoca en métricas que realmente reflejan el impacto en el negocio, más allá de las cifras de vanidad. El seguimiento constante permite una optimización ágil y basada en evidencia.
+                </p>
+                 <div class="md:flex md:items-center md:justify-around">
+                    <div class="chart-container mb-8 md:mb-0 md:w-1/2">
+                        <canvas id="metricasChart"></canvas>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8">
+                        <h3 class="text-2xl font-semibold mb-4 accent-text">Métricas Esenciales a Monitorear:</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li><strong class="secondary-accent-text">Alcance e Impresiones:</strong> Visibilidad de tus anuncios.</li>
+                            <li><strong class="secondary-accent-text">CTR (Click-Through Rate):</strong> Relevancia y atractivo del anuncio.</li>
+                            <li><strong class="secondary-accent-text">CPR (Costo por Resultado):</strong> Eficiencia de la inversión.</li>
+                            <li><strong class="secondary-accent-text">Conversiones/Resultados:</strong> Logro de los objetivos de campaña.</li>
+                            <li><strong class="secondary-accent-text">Frecuencia:</strong> Número de veces que un usuario ve tu anuncio.</li>
+                        </ul>
+                        <p class="mt-4 text-md text-gray-600">Realizar pruebas A/B y ajustar la estrategia basándose en estas métricas es vital para mejorar continuamente el rendimiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="text-center">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-4">Tu Próximo Paso en el Mundo de Meta Ads</h2>
+                <p class="text-lg mb-6">
+                    Implementar Meta Ads es un viaje de aprendizaje y adaptación constante. Al aplicar estas tendencias y mejores prácticas —desde la definición estratégica de objetivos y audiencias hasta la creación de anuncios impactantes y el análisis riguroso de métricas— estarás en el camino correcto para <span class="font-semibold accent-text">transformar tu inversión publicitaria en resultados tangibles</span>.
+                </p>
+                <a href="https://wa.me/5215578620531" target="_blank" rel="noopener noreferrer" 
+                   class="inline-block bg-[#FF6B6B] text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-[#e05252] transition-colors text-lg">
+                    Comienza a Crear tu Campaña Hoy
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center p-6 mt-12 bg-[#118AB2] text-gray-200">
+        <p>&copy; <span id="currentYear"></span> Infografía de Tendencias en Meta Ads.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function wrapLabels(label, maxWidth) {
+            if (typeof label !== 'string') return label; // Already an array or not a string
+            if (label.length <= maxWidth) return label;
+
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+        
+        const tooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        // Chart.js Data & Options
+        const objetivosData = {
+            labels: ['Reconocimiento de Marca', 'Consideración (Tráfico, Interacción)', 'Conversiones (Ventas, Leads)'],
+            datasets: [{
+                label: 'Distribución de Objetivos Comunes',
+                data: [25, 45, 30], // Mock data
+                backgroundColor: ['#FF6B6B', '#FFD166', '#06D6A0'],
+                borderColor: ['#FFFFFF', '#FFFFFF', '#FFFFFF'],
+                borderWidth: 2
+            }]
+        };
+        const objetivosOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: { size: 12 },
+                        color: '#333333',
+                        padding: 15,
+                        generateLabels: function(chart) {
+                            const data = chart.data;
+                            if (data.labels.length && data.datasets.length) {
+                                return data.labels.map(function(label, i) {
+                                    const meta = chart.getDatasetMeta(0);
+                                    const style = meta.controller.getStyle(i);
+                                    return {
+                                        text: wrapLabels(label, 20), // Wrap legend labels
+                                        fillStyle: style.backgroundColor,
+                                        strokeStyle: style.borderColor,
+                                        lineWidth: style.borderWidth,
+                                        hidden: isNaN(data.datasets[0].data[i]) || meta.data[i].hidden,
+                                        index: i
+                                    };
+                                });
+                            }
+                            return [];
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: { title: tooltipTitleCallback },
+                    backgroundColor: '#333333',
+                    titleFont: { size: 14 },
+                    bodyFont: { size: 12 },
+                    padding: 10,
+                    cornerRadius: 4
+                },
+                title: {
+                    display: true,
+                    text: 'Distribución Típica de Objetivos de Campaña',
+                    font: { size: 16, weight: 'bold' },
+                    color: '#118AB2',
+                    padding: { top: 10, bottom: 20 }
+                }
+            }
+        };
+        new Chart(document.getElementById('objetivosChart'), { type: 'doughnut', data: objetivosData, options: objetivosOptions });
+
+        const metricasLabels = ['Alcance', 'CTR (Tasa de Clics)', 'Costo por Resultado (CPR)', 'Resultados (Conversiones)', 'Frecuencia de Anuncio'];
+        const metricasData = {
+            labels: metricasLabels.map(label => wrapLabels(label, 16)), // Wrap axis labels
+            datasets: [{
+                label: 'Importancia Relativa de Métricas',
+                data: [70, 85, 90, 95, 60], // Mock data
+                backgroundColor: ['#FF6B6B', '#FFD166', '#06D6A0', '#118AB2', '#FF8C42'],
+                borderColor: '#FFFFFF',
+                borderWidth: 1,
+                borderRadius: 5
+            }]
+        };
+        const metricasOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y', // Horizontal bar chart
+            scales: {
+                x: { 
+                    beginAtZero: true,
+                    ticks: { color: '#333333', font: { size: 12 } },
+                    grid: { color: '#e0e0e0' }
+                },
+                y: { 
+                    ticks: { color: '#333333', font: { size: 12 } },
+                    grid: { display: false }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                     callbacks: { title: tooltipTitleCallback },
+                    backgroundColor: '#333333',
+                    titleFont: { size: 14 },
+                    bodyFont: { size: 12 },
+                    padding: 10,
+                    cornerRadius: 4
+                },
+                title: {
+                    display: true,
+                    text: 'Foco en Métricas Clave de Rendimiento',
+                    font: { size: 16, weight: 'bold' },
+                    color: '#118AB2',
+                    padding: { top: 10, bottom: 20 }
+                }
+            }
+        };
+        new Chart(document.getElementById('metricasChart'), { type: 'bar', data: metricasData, options: metricasOptions });
+
+    </script>
+</body>
+</html>

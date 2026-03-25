@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Interactivo de Excel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals with Green Accent -->
+    <!-- Application Structure Plan: A single-page, vertical-scrolling application with a fixed navigation header. The structure is task-oriented, guiding the user from foundational concepts to practical application. It starts with "Conceptos Clave" (UI elements as interactive cards), moves to "Primeros Pasos" (data entry/formatting guide), then to the core interactive section "El Poder de las Fórmulas" (a hands-on formula simulator), and concludes with "Guardar". This structure was chosen to transform passive reading into active learning, making abstract concepts tangible and providing immediate feedback, which is more effective for user education than a linear document. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: UI Components (Celda, Fila, etc.) -> Goal: Inform/Organize -> Viz/Method: Interactive cards in a grid (HTML/Tailwind) with icons -> Interaction: Hover/Focus reveals information -> Justification: More engaging and scannable than a simple list.
+        - Report Info: Simple Formulas (SUMA, PROMEDIO) -> Goal: Practice/Inform -> Viz/Method: A mini-spreadsheet simulator built with HTML inputs and styled with Tailwind -> Interaction: User enters numbers, clicks formula buttons, and sees instant results calculated via JavaScript -> Justification: Provides a hands-on, memorable learning experience that solidifies understanding of formulas.
+        - Report Info: Step-by-step guides (Data entry, Saving) -> Goal: Instruct -> Viz/Method: Clean, numbered text sections with clear typography -> Interaction: Reading -> Justification: Direct instruction is best for procedural steps.
+        - Library/Method: Vanilla JavaScript for all interactions. No charts needed as the source is conceptual. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfdfc;
+            color: #333;
+        }
+        .excel-green {
+            background-color: #1D6F42;
+            color: #ffffff;
+        }
+        .excel-green-light {
+            background-color: #EAF7ED;
+        }
+        .excel-green-text {
+            color: #107C41;
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #1D6F42;
+            border-bottom-color: #1D6F42;
+        }
+        .concept-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .formula-input {
+            border: 1px solid #ccc;
+            text-align: right;
+            padding: 0.5rem;
+            border-radius: 4px;
+            width: 100%;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .formula-input:focus {
+            outline: none;
+            border-color: #1D6F42;
+            box-shadow: 0 0 0 2px rgba(29, 111, 66, 0.2);
+        }
+        .formula-header {
+            background-color: #f4f4f4;
+            font-weight: 500;
+            text-align: center;
+        }
+        .formula-cell-label {
+            background-color: #f4f4f4;
+            font-weight: 500;
+            text-align: center;
+            padding: 0.5rem;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        header {
+            backdrop-filter: blur(10px);
+            background-color: rgba(253, 253, 252, 0.8);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 z-50 w-full border-b border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold excel-green-text">🌿</span>
+                    <h1 class="ml-3 text-xl font-bold text-gray-800">Tutorial Interactivo de Excel</h1>
+                </div>
+                <nav class="hidden md:flex md:space-x-8">
+                    <a href="#conceptos" class="nav-link text-gray-600 font-medium py-2">Conceptos</a>
+                    <a href="#primeros-pasos" class="nav-link text-gray-600 font-medium py-2">Primeros Pasos</a>
+                    <a href="#formulas" class="nav-link text-gray-600 font-medium py-2">Fórmulas</a>
+                    <a href="#guardar" class="nav-link text-gray-600 font-medium py-2">Guardar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <section id="intro" class="text-center mb-20">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Bienvenido al Mundo de Excel</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600">
+                Excel es una herramienta increíblemente poderosa para organizar, analizar y visualizar datos. Esta guía interactiva te enseñará los fundamentos de una forma práctica y sencilla. ¡Empecemos!
+            </p>
+        </section>
+
+        <section id="conceptos" class="mb-20 pt-20 -mt-20">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-2">Conceptos Clave</h3>
+            <p class="text-center text-gray-500 mb-12">Estos son los bloques de construcción de cualquier hoja de cálculo. Pasa el cursor sobre cada tarjeta para aprender más.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="concept-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h4 class="text-xl font-bold mb-2 excel-green-text">Celda</h4>
+                    <p class="text-gray-600">Es el rectángulo básico donde ingresas datos. Cada celda tiene una dirección única (ej. A1, B2).</p>
+                </div>
+                <div class="concept-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h4 class="text-xl font-bold mb-2 excel-green-text">Fila</h4>
+                    <p class="text-gray-600">Una línea horizontal de celdas. Se identifican con números (1, 2, 3...).</p>
+                </div>
+                <div class="concept-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h4 class="text-xl font-bold mb-2 excel-green-text">Columna</h4>
+                    <p class="text-gray-600">Una línea vertical de celdas. Se identifican con letras (A, B, C...).</p>
+                </div>
+                <div class="concept-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h4 class="text-xl font-bold mb-2 excel-green-text">Hoja de Cálculo</h4>
+                    <p class="text-gray-600">La cuadrícula completa donde trabajas. Un archivo puede tener múltiples hojas.</p>
+                </div>
+                <div class="concept-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h4 class="text-xl font-bold mb-2 excel-green-text">Libro de Trabajo</h4>
+                    <p class="text-gray-600">Es el archivo completo de Excel (.xlsx) que contiene todas tus hojas de cálculo.</p>
+                </div>
+                <div class="concept-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h4 class="text-xl font-bold mb-2 excel-green-text">Barra de Fórmulas</h4>
+                    <p class="text-gray-600">Muestra el contenido de la celda activa y es donde puedes escribir o editar fórmulas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="primeros-pasos" class="mb-20 pt-20 -mt-20">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-2">Primeros Pasos: Tus Datos</h3>
+            <p class="text-center text-gray-500 mb-12">Aprende a introducir, editar y dar formato a tu información.</p>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg border border-gray-200">
+                    <h4 class="text-xl font-bold mb-4">Ingreso y Edición</h4>
+                    <ol class="list-decimal list-inside space-y-3 text-gray-600">
+                        <li><strong>Seleccionar:</strong> Haz clic en una celda para activarla.</li>
+                        <li><strong>Escribir:</strong> Ingresa texto o números.</li>
+                        <li><strong>Confirmar:</strong> Presiona `Enter` (para ir abajo) o `Tab` (para ir a la derecha).</li>
+                        <li><strong>Editar:</strong> Haz doble clic en una celda o usa la Barra de Fórmulas.</li>
+                        <li><strong>Borrar:</strong> Selecciona una celda y presiona `Supr`.</li>
+                    </ol>
+                </div>
+                <div class="bg-white p-6 rounded-lg border border-gray-200">
+                    <h4 class="text-xl font-bold mb-4">Formato Básico</h4>
+                    <p class="text-gray-600 mb-3">Usa la pestaña "Inicio" en la cinta de opciones para mejorar la apariencia de tus datos:</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li><strong>Fuente:</strong> Cambia el tipo, tamaño y color de la letra.</li>
+                        <li><strong>Alineación:</strong> Centra o alinea tu texto.</li>
+                        <li><strong>Número:</strong> Define formatos como moneda ($) o porcentaje (%).</li>
+                        <li><strong>Estilos:</strong> Usa bordes y colores de relleno para resaltar celdas.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="formulas" class="mb-20 pt-20 -mt-20">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-2">El Poder de las Fórmulas</h3>
+            <p class="text-center text-gray-500 mb-12">Las fórmulas son el corazón de Excel. ¡Pruébalas tú mismo! Ingresa números en las celdas amarillas y presiona los botones.</p>
+            
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg border border-gray-200 shadow-lg">
+                <div class="grid grid-cols-3 gap-2 mb-6">
+                    <div class="formula-header col-start-2">A</div>
+                    <div class="formula-header">B</div>
+                    <div class="formula-cell-label">1</div>
+                    <input type="number" id="A1" class="formula-input excel-green-light" value="10">
+                    <input type="number" id="B1" class="formula-input excel-green-light" value="25">
+                    <div class="formula-cell-label">2</div>
+                    <input type="number" id="A2" class="formula-input excel-green-light" value="20">
+                    <input type="number" id="B2" class="formula-input excel-green-light" value="50">
+                    <div class="formula-cell-label">3</div>
+                    <input type="number" id="A3" class="formula-input excel-green-light" value="30">
+                    <input type="number" id="B3" class="formula-input excel-green-light" value="75">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <button id="sumBtn" class="w-full text-white font-bold py-2 px-4 rounded transition bg-green-600 hover:bg-green-700">SUMA (A1:A3)</button>
+                    <button id="avgBtn" class="w-full text-white font-bold py-2 px-4 rounded transition bg-blue-600 hover:bg-blue-700">PROMEDIO (B1:B3)</button>
+                    <button id="countBtn" class="w-full text-white font-bold py-2 px-4 rounded transition bg-orange-500 hover:bg-orange-600">CONTAR (A1:B3)</button>
+                    <button id="multiplyBtn" class="w-full text-white font-bold py-2 px-4 rounded transition bg-purple-600 hover:bg-purple-700">MULTIPLICAR (A1*B1)</button>
+                </div>
+
+                <div class="bg-gray-100 p-4 rounded-lg">
+                    <p class="text-sm text-gray-500">Fórmula Aplicada:</p>
+                    <p id="formulaDisplay" class="text-lg font-mono excel-green-text font-semibold">=SUMA(A1:A3)</p>
+                    <p class="text-sm text-gray-500 mt-2">Resultado:</p>
+                    <p id="resultDisplay" class="text-3xl font-bold text-gray-800">60</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="guardar" class="pt-20 -mt-20">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-2">Guardar y Continuar</h3>
+            <p class="text-center text-gray-500 mb-12">No pierdas tu progreso. Guardar tu trabajo es fundamental.</p>
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg border border-gray-200">
+                <h4 class="text-xl font-bold mb-4">Pasos para Guardar</h4>
+                <ol class="list-decimal list-inside space-y-3 text-gray-600">
+                    <li>Ve al menú <strong>Archivo</strong> en la esquina superior izquierda.</li>
+                    <li>Selecciona <strong>Guardar como</strong>.</li>
+                    <li>Elige una ubicación en tu computadora o en la nube (OneDrive).</li>
+                    <li>Asigna un nombre descriptivo a tu archivo.</li>
+                    <li>Haz clic en el botón <strong>Guardar</strong>.</li>
+                </ol>
+                <p class="mt-6 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md">
+                    <strong>Consejo:</strong> ¡Usa `Ctrl + G` (o `Cmd + S` en Mac) para guardar rápidamente tus cambios mientras trabajas!
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+            <p>&copy; 2024 Tutorial Interactivo de Excel. Creado para facilitar el aprendizaje.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const formulaDisplay = document.getElementById('formulaDisplay');
+            const resultDisplay = document.getElementById('resultDisplay');
+
+            const getCellValue = (id) => parseFloat(document.getElementById(id).value) || 0;
+
+            function calculateSum() {
+                const a1 = getCellValue('A1');
+                const a2 = getCellValue('A2');
+                const a3 = getCellValue('A3');
+                const sum = a1 + a2 + a3;
+                formulaDisplay.textContent = '=SUMA(A1:A3)';
+                resultDisplay.textContent = sum;
+            }
+
+            function calculateAvg() {
+                const b1 = getCellValue('B1');
+                const b2 = getCellValue('B2');
+                const b3 = getCellValue('B3');
+                const avg = (b1 + b2 + b3) / 3;
+                formulaDisplay.textContent = '=PROMEDIO(B1:B3)';
+                resultDisplay.textContent = avg.toFixed(2);
+            }
+
+            function calculateCount() {
+                let count = 0;
+                const ids = ['A1', 'B1', 'A2', 'B2', 'A3', 'B3'];
+                ids.forEach(id => {
+                    if (document.getElementById(id).value.trim() !== '') {
+                        count++;
+                    }
+                });
+                formulaDisplay.textContent = '=CONTAR(A1:B3)';
+                resultDisplay.textContent = count;
+            }
+            
+            function calculateMultiply() {
+                const a1 = getCellValue('A1');
+                const b1 = getCellValue('B1');
+                const product = a1 * b1;
+                formulaDisplay.textContent = '=A1*B1';
+                resultDisplay.textContent = product;
+            }
+
+            document.getElementById('sumBtn').addEventListener('click', calculateSum);
+            document.getElementById('avgBtn').addEventListener('click', calculateAvg);
+            document.getElementById('countBtn').addEventListener('click', calculateCount);
+            document.getElementById('multiplyBtn').addEventListener('click', calculateMultiply);
+            
+            const inputs = document.querySelectorAll('.formula-input');
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                   const currentFormula = formulaDisplay.textContent;
+                   if (currentFormula.includes('SUMA')) calculateSum();
+                   else if (currentFormula.includes('PROMEDIO')) calculateAvg();
+                   else if (currentFormula.includes('CONTAR')) calculateCount();
+                   else if (currentFormula.includes('*')) calculateMultiply();
+                });
+            });
+
+            calculateSum();
+            
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 80) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-MX" xml:lang="es-MX">
+<head>
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Tendencias y Estrategias en Google Ads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .section-title {
+            color: #007bff;
+        }
+        .card-bg {
+            background-color: white;
+        }
+        .highlight-stat {
+            color: #dc3545;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        .accent-text {
+             color: #007bff;
+        }
+        .secondary-accent-text {
+            color: #28a745;
+        }
+        .flowchart-step {
+            background-color: #e9ecef;
+            color: #343a40;
+            border-left: 5px solid #007bff;
+        }
+        .flowchart-arrow {
+            color: #6c757d;
+        }
+        .icon-placeholder {
+            font-size: 2.5rem;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-[#007bff] text-white p-8 text-center sticky top-0 z-50 shadow-lg">
+        <h1 class="text-4xl font-bold">Infografía: Tendencias y Estrategias en Google Ads</h1>
+        <p class="text-xl mt-2">Guía esencial para maximizar tu inversión publicitaria.</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="introduccion" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">Google Ads: Capturando la Demanda Activa</h2>
+                <p class="text-lg text-center mb-6">
+                    Google Ads es la plataforma líder para conectar tu negocio con usuarios que buscan activamente tus productos o servicios. Su poder radica en la capacidad de posicionar tu oferta en el momento exacto en que un cliente potencial manifiesta su interés, lo que la convierte en una herramienta insustituible para el crecimiento digital.
+                </p>
+                <div class="text-center my-8">
+                    <p class="text-gray-600 text-2xl">Llega a clientes en el momento de</p>
+                    <p class="highlight-stat">INTENCIÓN</p>
+                    <p class="text-gray-600 text-2xl">de búsqueda.</p>
+                </div>
+                <p class="text-lg text-center">
+                    Desde la Red de Búsqueda hasta YouTube y Display, Google Ads ofrece diversas vías para alcanzar tus objetivos, desde generar ventas directas hasta aumentar la visibilidad de tu marca.
+                </p>
+            </div>
+        </section>
+
+        <section id="objetivos" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">Paso 1: Define tus Objetivos de Campaña</h2>
+                <p class="text-lg text-center mb-8">
+                    Antes de lanzar cualquier campaña, es crucial establecer un objetivo claro. Google Ads te permite alinear tus esfuerzos con las fases del embudo de ventas, optimizando la entrega de tus anuncios para la acción deseada.
+                </p>
+                <div class="md:flex md:items-center md:justify-around">
+                    <div class="chart-container mb-8 md:mb-0 md:w-1/2">
+                        <canvas id="objetivosGoogleAdsChart"></canvas>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8">
+                        <h3 class="text-2xl font-semibold mb-4 accent-text">Objetivos Comunes en Google Ads:</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li><strong class="secondary-accent-text">Ventas:</strong> Impulsar transacciones.</li>
+                            <li><strong class="secondary-accent-text">Clientes Potenciales:</strong> Generar leads.</li>
+                            <li><strong class="secondary-accent-text">Tráfico al Sitio Web:</strong> Aumentar visitas.</li>
+                            <li><strong class="secondary-accent-text">Consideración:</strong> Fomentar la exploración de productos.</li>
+                            <li><strong class="secondary-accent-text">Notoriedad:</strong> Aumentar el reconocimiento de marca.</li>
+                            <li><strong class="secondary-accent-text">Promoción de Apps:</strong> Conseguir descargas.</li>
+                            <li><strong class="secondary-accent-text">Visitas a Tiendas:</strong> Dirigir tráfico físico.</li>
+                        </ul>
+                        <p class="mt-4 text-md text-gray-600">Elegir el objetivo correcto guía la estrategia de puja y la optimización de la campaña.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="palabras-clave" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">Paso 2: Investigación de Palabras Clave</h2>
+                <p class="text-lg text-center mb-8">
+                    Las palabras clave son el motor de las campañas de búsqueda. Identificar los términos correctos que tus clientes potenciales utilizan es fundamental para aparecer en los resultados de búsqueda relevantes.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-3 text-[#007bff]">Tipos de Concordancia:</h3>
+                        <ul class="list-disc list-inside space-y-2 text-md">
+                            <li><strong class="secondary-accent-text">Amplia:</strong> Mayor alcance, menos control.</li>
+                            <li><strong class="secondary-accent-text">Frase:</strong> Equilibrio entre alcance y control.</li>
+                            <li><strong class="secondary-accent-text">Exacta:</strong> Mayor control, menor alcance.</li>
+                            <li><strong class="secondary-accent-text">Negativas:</strong> Excluye búsquedas irrelevantes.</li>
+                        </ul>
+                        <p class="mt-4 text-sm text-gray-600">El Planificador de Palabras Clave es tu mejor aliado para descubrir y refinar tus términos.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-3 text-[#007bff]">Ejemplos de Palabras Clave:</h3>
+                        <ul class="list-disc list-inside space-y-2 text-md">
+                            <li>"zapatos deportivos" (Amplia)</li>
+                            <li>"zapatos deportivos hombre" (Frase)</li>
+                            <li>[zapatos deportivos negros] (Exacta)</li>
+                            <li>-usados (Negativa)</li>
+                        </ul>
+                        <p class="mt-4 text-sm text-gray-600">La elección de concordancia impacta directamente en la visibilidad y el costo de tus anuncios.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="segmentacion-audiencia" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">Paso 3: Segmentación de Audiencia (Display y YouTube)</h2>
+                <p class="text-lg text-center mb-8">
+                    Más allá de las palabras clave, la Red de Display y YouTube permiten una segmentación profunda basada en el comportamiento y los intereses de los usuarios, ampliando el alcance de tus campañas.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+                    <div class="border border-gray-200 rounded-lg p-4 shadow hover:shadow-lg transition-shadow">
+                        <div class="icon-placeholder mb-3">👥</div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#007bff]">Audiencias por Intereses</h3>
+                        <p class="text-sm">Usuarios con intereses específicos y hábitos de navegación.</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 shadow hover:shadow-lg transition-shadow">
+                        <div class="icon-placeholder mb-3">🔄</div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#007bff]">Remarketing</h3>
+                        <p class="text-sm">Vuelve a conectar con visitantes de tu sitio web o app.</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 shadow hover:shadow-lg transition-shadow">
+                        <div class="icon-placeholder mb-3">🗺️</div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#007bff]">Ubicaciones</h3>
+                        <p class="text-sm">Dirige tus anuncios a áreas geográficas específicas.</p>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-md text-gray-600">La combinación de segmentación demográfica y de intereses permite una precisión sin precedentes.</p>
+            </div>
+        </section>
+
+        <section id="presupuesto-puja" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">Paso 4: Presupuesto y Estrategia de Puja</h2>
+                <p class="text-lg text-center mb-8">
+                    Controlar tu gasto y optimizar tus pujas es esencial. Google Ads ofrece diversas estrategias para ayudarte a alcanzar tus objetivos de la manera más eficiente posible.
+                </p>
+                <div class="md:flex md:items-center md:justify-around">
+                    <div class="chart-container mb-8 md:mb-0 md:w-1/2">
+                        <canvas id="pujasGoogleAdsChart"></canvas>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8">
+                        <h3 class="text-2xl font-semibold mb-4 accent-text">Estrategias de Puja Populares:</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li><strong class="secondary-accent-text">Maximizar Clics:</strong> Para obtener la mayor cantidad de tráfico.</li>
+                            <li><strong class="secondary-accent-text">Maximizar Conversiones:</strong> Para generar acciones valiosas.</li>
+                            <li><strong class="secondary-accent-text">CPA Objetivo:</strong> Para controlar el costo por adquisición.</li>
+                            <li><strong class="secondary-accent-text">ROAS Objetivo:</strong> Para maximizar el retorno de la inversión.</li>
+                        </ul>
+                        <p class="mt-4 text-md text-gray-600">Tu presupuesto diario y la estrategia de puja elegida determinarán el rendimiento de tu campaña.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="crear-anuncios" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">Paso 5: Crea tus Anuncios Atractivos</h2>
+                <p class="text-lg text-center mb-8">
+                    Tus anuncios son la cara de tu campaña. Deben ser relevantes, persuasivos y optimizados para captar la atención del usuario en un espacio limitado.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 accent-text">Anuncios de Búsqueda Adaptables (RSA):</h3>
+                        <div class="bg-gray-50 p-6 rounded-lg shadow">
+                            <p class="text-lg font-bold text-[#dc3545] mb-2">Titulares (Hasta 15):</p>
+                            <ul class="list-disc list-inside space-y-1 text-md mb-4">
+                                <li>Cortos, pegadizos, con palabras clave.</li>
+                                <li>Máximo 30 caracteres.</li>
+                            </ul>
+                            <p class="text-lg font-bold text-[#dc3545] mb-2">Descripciones (Hasta 4):</p>
+                            <ul class="list-disc list-inside space-y-1 text-md">
+                                <li>Más detalladas, con beneficios y CTA.</li>
+                                <li>Máximo 90 caracteres.</li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-600">Google combina automáticamente los mejores elementos para cada búsqueda.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 accent-text">Extensiones de Anuncios:</h3>
+                        <div class="bg-gray-50 p-6 rounded-lg shadow">
+                            <ul class="list-disc list-inside space-y-2 text-md">
+                                <li><strong class="secondary-accent-text">Enlaces de Sitio:</strong> Dirige a páginas específicas.</li>
+                                <li><strong class="secondary-accent-text">Texto Destacado:</strong> Resalta beneficios clave.</li>
+                                <li><strong class="secondary-accent-text">Llamada:</strong> Permite llamar directamente desde el anuncio.</li>
+                                <li><strong class="secondary-accent-text">Ubicación:</strong> Muestra la dirección de tu negocio.</li>
+                                <li><strong class="secondary-accent-text">Extractos de Sitio:</strong> Presenta categorías de productos/servicios.</li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-600">Mejoran la visibilidad y proporcionan más información al usuario.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="configuracion-campana" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">Paso 6: Configura tu Campaña en Google Ads</h2>
+                <p class="text-lg text-center mb-8">
+                    El Administrador de Google Ads es tu centro de control. Sigue estos pasos para poner tu campaña en marcha de forma efectiva.
+                </p>
+                <div class="space-y-4">
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#dc3545]">1.</span>
+                        <div><h4 class="font-semibold">Acceso y Nueva Campaña</h4><p class="text-sm">ads.google.com y clic en "Nueva campaña".</p></div>
+                    </div>
+                    <div class="text-center flowchart-arrow text-2xl">⬇️</div>
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#dc3545]">2.</span>
+                        <div><h4 class="font-semibold">Selecciona Objetivo y Tipo</h4><p class="text-sm">Define tu meta y el tipo de campaña (Búsqueda, Display, etc.).</p></div>
+                    </div>
+                    <div class="text-center flowchart-arrow text-2xl">⬇️</div>
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#dc3545]">3.</span>
+                        <div><h4 class="font-semibold">Configura Redes y Ubicaciones</h4><p class="text-sm">Elige dónde y a quién mostrar tus anuncios.</p></div>
+                    </div>
+                    <div class="text-center flowchart-arrow text-2xl">⬇️</div>
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#dc3545]">4.</span>
+                        <div><h4 class="font-semibold">Presupuesto y Puja</h4><p class="text-sm">Establece tu inversión y estrategia de optimización.</p></div>
+                    </div>
+                    <div class="text-center flowchart-arrow text-2xl">⬇️</div>
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#dc3545]">5.</span>
+                        <div><h4 class="font-semibold">Grupos de Anuncios y Palabras Clave</h4><p class="text-sm">Organiza y añade tus términos de búsqueda.</p></div>
+                    </div>
+                    <div class="text-center flowchart-arrow text-2xl">⬇️</div>
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#dc3545]">6.</span>
+                        <div><h4 class="font-semibold">Creación de Anuncios y Extensiones</h4><p class="text-sm">Diseña tus mensajes y añade información adicional.</p></div>
+                    </div>
+                    <div class="text-center flowchart-arrow text-2xl">⬇️</div>
+                    <div class="flowchart-step p-4 rounded-md shadow-sm flex items-center">
+                        <span class="text-2xl font-bold mr-4 text-[#dc3545]">7.</span>
+                        <div><h4 class="font-semibold">Revisa y Publica</h4><p class="text-sm">Verifica todo y lanza tu campaña.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="optimizacion" class="mb-12">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-6 text-center">Paso 7: Monitoreo, Análisis y Optimización Continua</h2>
+                <p class="text-lg text-center mb-8">
+                    El éxito en Google Ads es un proceso iterativo. El monitoreo constante y la optimización basada en datos son esenciales para mejorar el rendimiento de tus campañas a lo largo del tiempo.
+                </p>
+                <div class="md:flex md:items-center md:justify-around">
+                    <div class="chart-container mb-8 md:mb-0 md:w-1/2">
+                        <canvas id="metricasGoogleAdsChart"></canvas>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8">
+                        <h3 class="text-2xl font-semibold mb-4 accent-text">Métricas Clave a Monitorear:</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li><strong class="secondary-accent-text">Clics e Impresiones:</strong> Visibilidad y tráfico.</li>
+                            <li><strong class="secondary-accent-text">CTR:</strong> Relevancia del anuncio.</li>
+                            <li><strong class="secondary-accent-text">CPC:</strong> Costo por cada interacción.</li>
+                            <li><strong class="secondary-accent-text">CPA:</strong> Costo por cada conversión.</li>
+                            <li><strong class="secondary-accent-text">Tasa de Conversión:</strong> Eficiencia en la consecución de objetivos.</li>
+                            <li><strong class="secondary-accent-text">Nivel de Calidad:</strong> Relevancia global.</li>
+                        </ul>
+                        <p class="mt-4 text-md text-gray-600">Realiza pruebas A/B, ajusta pujas y refina tus palabras clave negativas para optimizar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="text-center">
+            <div class="card-bg rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold section-title mb-4">Potencia tu Negocio con Google Ads</h2>
+                <p class="text-lg mb-6">
+                    Al implementar estos pasos clave, desde la definición de objetivos hasta la optimización continua, se entendera por que invertir en Google Ads que no solo alcancen a tu audiencia ideal, sino que también generen un <span class="font-semibold accent-text">retorno de inversión significativo</span>. La clave es la adaptación y el análisis constante.
+                </p>
+                <a href="https://wa.me/5215578620531" target="_blank" rel="noopener noreferrer"
+                   class="inline-block bg-[#007bff] text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-[#0056b3] transition-colors text-lg">
+                    Empieza con Google Ads Hoy
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center p-6 mt-12 bg-[#007bff] text-gray-200">
+        <p>&copy; <span id="currentYear"></span> Infografía de Google Ads.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function wrapLabels(label, maxWidth) {
+            if (typeof label !== 'string') return label;
+            if (label.length <= maxWidth) return label;
+
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+        
+        const tooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const objetivosGoogleAdsData = {
+            labels: ['Ventas', 'Clientes Potenciales', 'Tráfico al Sitio Web', 'Consideración de Marca', 'Cobertura y Notoriedad', 'Promoción de Aplicaciones', 'Visitas a Tiendas Físicas'],
+            datasets: [{
+                label: 'Distribución de Objetivos de Campaña',
+                data: [20, 25, 15, 10, 10, 10, 10],
+                backgroundColor: ['#007bff', '#28a745', '#dc3545', '#6c757d', '#ffc107', '#17a2b8', '#fd7e14'],
+                borderColor: '#FFFFFF',
+                borderWidth: 2
+            }]
+        };
+        const objetivosGoogleAdsOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: { size: 12 },
+                        color: '#343a40',
+                        padding: 15,
+                        generateLabels: function(chart) {
+                            const data = chart.data;
+                            if (data.labels.length && data.datasets.length) {
+                                return data.labels.map(function(label, i) {
+                                    const meta = chart.getDatasetMeta(0);
+                                    const style = meta.controller.getStyle(i);
+                                    return {
+                                        text: wrapLabels(label, 20),
+                                        fillStyle: style.backgroundColor,
+                                        strokeStyle: style.borderColor,
+                                        lineWidth: style.borderWidth,
+                                        hidden: isNaN(data.datasets[0].data[i]) || meta.data[i].hidden,
+                                        index: i
+                                    };
+                                });
+                            }
+                            return [];
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: { title: tooltipTitleCallback },
+                    backgroundColor: '#343a40',
+                    titleFont: { size: 14 },
+                    bodyFont: { size: 12 },
+                    padding: 10,
+                    cornerRadius: 4
+                },
+                title: {
+                    display: true,
+                    text: 'Distribución Típica de Objetivos de Google Ads',
+                    font: { size: 16, weight: 'bold' },
+                    color: '#007bff',
+                    padding: { top: 10, bottom: 20 }
+                }
+            }
+        };
+        new Chart(document.getElementById('objetivosGoogleAdsChart'), { type: 'doughnut', data: objetivosGoogleAdsData, options: objetivosGoogleAdsOptions });
+
+        const pujasGoogleAdsLabels = ['Maximizar Clics', 'Maximizar Conversiones', 'CPA Objetivo', 'ROAS Objetivo', 'CPC Manual'];
+        const pujasGoogleAdsData = {
+            labels: pujasGoogleAdsLabels.map(label => wrapLabels(label, 16)),
+            datasets: [{
+                label: 'Importancia de Estrategias de Puja',
+                data: [70, 85, 75, 60, 50],
+                backgroundColor: ['#007bff', '#28a745', '#dc3545', '#6c757d', '#ffc107'],
+                borderColor: '#FFFFFF',
+                borderWidth: 1,
+                borderRadius: 5
+            }]
+        };
+        const pujasGoogleAdsOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            scales: {
+                x: { 
+                    beginAtZero: true,
+                    ticks: { color: '#343a40', font: { size: 12 } },
+                    grid: { color: '#e0e0e0' }
+                },
+                y: { 
+                    ticks: { color: '#343a40', font: { size: 12 } },
+                    grid: { display: false }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: { title: tooltipTitleCallback },
+                    backgroundColor: '#343a40',
+                    titleFont: { size: 14 },
+                    bodyFont: { size: 12 },
+                    padding: 10,
+                    cornerRadius: 4
+                },
+                title: {
+                    display: true,
+                    text: 'Foco en Estrategias de Puja Comunes',
+                    font: { size: 16, weight: 'bold' },
+                    color: '#007bff',
+                    padding: { top: 10, bottom: 20 }
+                }
+            }
+        };
+        new Chart(document.getElementById('pujasGoogleAdsChart'), { type: 'bar', data: pujasGoogleAdsData, options: pujasGoogleAdsOptions });
+
+        const metricasGoogleAdsLabels = ['Clics', 'Impresiones', 'CTR (Tasa de Clics)', 'CPC (Costo por Clic)', 'CPA (Costo por Adquisición)', 'Tasa de Conversión', 'Nivel de Calidad'];
+        const metricasGoogleAdsData = {
+            labels: metricasGoogleAdsLabels.map(label => wrapLabels(label, 16)),
+            datasets: [{
+                label: 'Importancia Relativa de Métricas',
+                data: [80, 75, 90, 85, 95, 92, 88],
+                backgroundColor: ['#007bff', '#28a745', '#dc3545', '#6c757d', '#ffc107', '#17a2b8', '#fd7e14'],
+                borderColor: '#FFFFFF',
+                borderWidth: 1,
+                borderRadius: 5
+            }]
+        };
+        const metricasGoogleAdsOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            scales: {
+                x: { 
+                    beginAtZero: true,
+                    ticks: { color: '#343a40', font: { size: 12 } },
+                    grid: { color: '#e0e0e0' }
+                },
+                y: { 
+                    ticks: { color: '#343a40', font: { size: 12 } },
+                    grid: { display: false }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: { title: tooltipTitleCallback },
+                    backgroundColor: '#343a40',
+                    titleFont: { size: 14 },
+                    bodyFont: { size: 12 },
+                    padding: 10,
+                    cornerRadius: 4
+                },
+                title: {
+                    display: true,
+                    text: 'Foco en Métricas Clave de Rendimiento',
+                    font: { size: 16, weight: 'bold' },
+                    color: '#007bff',
+                    padding: { top: 10, bottom: 20 }
+                }
+            }
+        };
+        new Chart(document.getElementById('metricasGoogleAdsChart'), { type: 'bar', data: metricasGoogleAdsData, options: metricasGoogleAdsOptions });
+    </script>
+</body>
+</html>
