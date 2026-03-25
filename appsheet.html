@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppSheet Pro | Formularios Inteligentes a Bajo Costo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-blue-900">AppSheet<span class="text-blue-600">Experts</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#beneficios" class="text-slate-600 hover:text-blue-600 font-medium transition">Beneficios</a>
+                    <a href="#precios" class="text-slate-600 hover:text-blue-600 font-medium transition">Precios</a>
+                    <a href="#contacto" class="bg-blue-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+                        ¡Empezar Ahora!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 hero-gradient text-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="inline-block px-4 py-1 rounded-full bg-blue-400/30 text-blue-100 text-sm font-semibold mb-6">
+                        Desarrollo Low-Code Ágil
+                    </span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+                        Digitaliza tu Negocio con Apps de <span class="text-blue-200">Bajo Costo</span>
+                    </h1>
+                    <p class="text-lg text-blue-50 text-opacity-90 mb-8 leading-relaxed">
+                        Creamos formularios de captura de datos inteligentes con AppSheet. Potencia la productividad de tu equipo en campo sin invertir miles de dólares en desarrollo tradicional.
+                    </p>
+                    <div class="flex flex-col sm:row gap-4">
+                        <a href="#contacto" class="inline-flex justify-center items-center px-8 py-4 bg-white text-blue-700 rounded-xl font-bold text-lg hover:bg-blue-50 transition transform hover:-translate-y-1">
+                            Solicitar Presupuesto Gratis
+                        </a>
+                        <p class="text-sm text-blue-100 flex items-center gap-2">
+                            <i class="fas fa-check-circle"></i> Entrega en tiempo récord (3-7 días)
+                        </p>
+                    </div>
+                </div>
+                <div class="relative flex justify-center">
+                    <div class="w-64 h-[500px] bg-slate-900 rounded-[3rem] border-8 border-slate-800 shadow-2xl overflow-hidden float-animation">
+                        <!-- Simulación de la App -->
+                        <div class="h-6 w-1/2 bg-slate-800 mx-auto mt-2 rounded-full"></div>
+                        <div class="p-6 pt-10">
+                            <div class="flex justify-between items-center mb-6">
+                                <div class="w-10 h-10 bg-blue-600 rounded-lg"></div>
+                                <div class="w-32 h-4 bg-slate-700 rounded"></div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="h-10 w-full bg-slate-800 rounded"></div>
+                                <div class="h-24 w-full bg-slate-800 rounded flex flex-col items-center justify-center text-slate-500">
+                                    <i class="fas fa-camera text-2xl mb-2"></i>
+                                    <span class="text-xs">Subir Foto</span>
+                                </div>
+                                <div class="h-10 w-full bg-blue-600 rounded"></div>
+                                <div class="h-32 w-full bg-slate-800 rounded mt-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decoración -->
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-400/20 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Beneficios Section -->
+    <section id="beneficios" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Potencia tus Formas de Captura</h2>
+                <div class="w-20 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Beneficio 1 -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition">
+                        <i class="fas fa-wifi-slash"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Modo Offline</h3>
+                    <p class="text-slate-600">Captura datos en zonas remotas sin conexión. La aplicación sincroniza automáticamente al recuperar señal.</p>
+                </div>
+
+                <!-- Beneficio 2 -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-green-600 group-hover:text-white transition">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Geolocalización</h3>
+                    <p class="text-slate-600">Registra automáticamente las coordenadas GPS donde se realiza el formulario para auditorías precisas.</p>
+                </div>
+
+                <!-- Beneficio 3 -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition">
+                        <i class="fas fa-barcode"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Escaneo QR/Barcode</h3>
+                    <p class="text-slate-600">Elimina errores manuales. Escanea códigos directamente con la cámara del dispositivo.</p>
+                </div>
+
+                <!-- Beneficio 4 -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-amber-600 group-hover:text-white transition">
+                        <i class="fas fa-signature"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Firmas Digitales</h3>
+                    <p class="text-slate-600">Recoge firmas de clientes o supervisores directamente en la pantalla para validación inmediata.</p>
+                </div>
+
+                <!-- Beneficio 5 -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-red-100 text-red-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-red-600 group-hover:text-white transition">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Reportes PDF</h3>
+                    <p class="text-slate-600">Genera y envía automáticamente reportes profesionales por correo al completar un formulario.</p>
+                </div>
+
+                <!-- Beneficio 6 -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Dashboard Google Sheets</h3>
+                    <p class="text-slate-600">Visualiza todos tus datos en tiempo real en hojas de cálculo o gráficos interactivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Precios / Comparativa Section -->
+    <section id="precios" class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">¿Por qué elegir <span class="text-blue-400">mi servicio?</span></h2>
+                    <p class="text-lg text-slate-400 mb-8">
+                        El desarrollo de software a medida puede costar miles de dólares y meses de espera. Mi propuesta utiliza la potencia de AppSheet para entregarte lo mismo por una fracción del costo.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold">Bajo Costo de Implementación</h4>
+                                <p class="text-sm text-slate-400">Sin costos ocultos. Paga solo por el diseño y configuración inicial.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold">Escalabilidad Total</h4>
+                                <p class="text-sm text-slate-400">¿Necesitas añadir un campo nuevo? Se hace en minutos, no en días.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-800 p-10 rounded-3xl border border-slate-700 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 bg-blue-600 text-xs font-bold uppercase tracking-widest rounded-bl-xl">Ahorro 80%</div>
+                    <h3 class="text-2xl font-bold mb-6">Presupuesto Especial</h3>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-4xl font-bold">Desde</span>
+                        <span class="text-6xl font-extrabold ml-2 text-blue-400">$XX</span>
+                        <span class="text-slate-400 ml-2">USD</span>
+                    </div>
+                    <hr class="border-slate-700 mb-6">
+                    <ul class="space-y-4 mb-8 text-slate-300">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> App para Android / iOS / Web</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Conexión a Google Sheets</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> 1 Mes de Soporte Gratis</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Capacitación de uso</li>
+                    </ul>
+                    <a href="#contacto" class="block w-full text-center bg-blue-600 py-4 rounded-xl font-bold hover:bg-blue-500 transition">
+                        Quiero un Presupuesto
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Hablemos de tu Proyecto</h2>
+                <p class="text-slate-600">Cuéntame qué proceso quieres automatizar y te enviaré una propuesta personalizada.</p>
+            </div>
+
+            <form class="space-y-6">
+              
+                   
+                <button type="submit" class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold text-lg hover:bg-slate-800 transition shadow-xl">
+                    WhatsApp <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm">© 2026 AppSheet Experts - Soluciones ágiles de bajo costo.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
